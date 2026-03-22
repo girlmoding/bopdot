@@ -1,0 +1,48 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "width": 1920,
+
+    "modules-left": ["cpu", "network"],
+    "modules-center": ["custom/motd"],
+    "modules-right": ["pulseaudio", "clock", "tray"],
+
+    "cpu": {
+        "format": "CPU: {usage}%",
+        "tooltip": true,
+        "interval": 2
+    },
+
+    "network": {
+        "format": "5G",
+        "tooltip": false,
+        "on-click": "kitty -e nmtui"
+    },
+
+    "custom/motd": {
+        "exec": "~/.config/waybar/scripts/announcer.sh",
+        "return-type": "json",
+        "interval": 0,
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-icons": ["", "", ""],
+        "tooltip": true,
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%"
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "{:%A, %d %B %Y}"
+    },
+
+    "tray": {
+        "icon-theme": "Papirus",
+        "spacing": 5
+    }
+}
